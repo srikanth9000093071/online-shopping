@@ -1,5 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <spring:url var="css" value="/resources/css"/>
 <spring:url var="js" value="/resources/js"/>
@@ -54,18 +55,23 @@
 			<div class="content">
 			    
 			    <!-- Loading the Home content -->
-			    <c:if test="${userClickHome eq true}">
+			    <c:if test="${userClickHome == true}">
 			   	 <%@ include file="home.jsp" %>
 			    </c:if>
 			    
 			    <!-- Loads Only when user clicks about -->
-			    <c:if test="${userClickAbout eq true}">
+			    <c:if test="${userClickAbout == true}">
 			   	 <%@ include file="about.jsp" %>
 			    </c:if>
 			    
 			     <!-- Loads Only when user clicks contact -->
-			    <c:if test="${userClickContact eq true}">
+			    <c:if test="${userClickContact == true}">
 			   	 <%@ include file="contact.jsp" %>
+			    </c:if>
+			    
+			    <!-- Loads Only when user clicks userClickAllProducts or  -->
+			    <c:if test="${userClickAllProducts == true || userClickCategoryProducts == true }">
+			   	 <%@ include file="listProducts.jsp" %>
 			    </c:if>
 			    <!-- /.container -->
 			</div>
