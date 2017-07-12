@@ -12,7 +12,7 @@
    http://www.springframework.org/schema/mvc/spring-mvc.xsd
    ">
 	<context:component-scan base-package="info.cds.onlineshopping.controller" />
-	<context:component-scan base-package="info.cds.shoppingbackend.daoimpl" />
+	<context:component-scan base-package="info.cds.shoppingbackend" />
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
