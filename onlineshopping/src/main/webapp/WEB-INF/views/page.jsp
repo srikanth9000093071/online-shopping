@@ -73,10 +73,17 @@
 			   	 <%@ include file="contact.jsp" %>
 			    </c:if>
 			    
-			    <!-- Loads Only when user clicks userClickAllProducts or  -->
+			    <!-- Loads Only when user clicks userClickAllProducts or userClickCategoryProducts  -->
 			    <c:if test="${userClickAllProducts == true || userClickCategoryProducts == true }">
 			   	 <%@ include file="listProducts.jsp" %>
 			    </c:if>
+			    
+			     <!-- Loads Only when user clicks userClickShowProduct  -->
+			    <c:if test="${userClickShowProduct == true}">
+			   	 <%@ include file="singleProduct.jsp" %>
+			    </c:if>
+			    
+			    
 			    <!-- /.container -->
 			</div>
 			    
