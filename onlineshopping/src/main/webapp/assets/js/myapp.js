@@ -261,8 +261,41 @@ $(function(){
 	 
 	 
 	 //---------------------
+	 //Validation code for Category
+	 
+	 var $categoryForm = $('#categoryForm');
+	 if($categoryForm.length){
+		 $categoryForm.validate({
+			
+			 rules : {
+				 name : {
+					 required: true,
+					 minlength: 2
+				 },
+				 description :{
+					 required: true
+				 }
+			 },
+			 messages: {
+				 name : {
+					 required : 'Please Add the category name !',
+					 minlength: 'The category name shold not be less than 2 characters'
+				 },
+				 description : {
+					 required: 'Please a description for this category !'
+				 }
+			 },
+			 errorElement: 'em',
+			 errorPlacement : function(error,element){
+				 //add the class of help-block
+				 error.addClass('help-block');
+				 //add the error element after the input element
+				 error.insertAfter(element);
+			 }
+		 });
+	 }
 	
-	
+	//----------------------------------------------
 	
 });
 

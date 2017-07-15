@@ -49,7 +49,6 @@ public class HibernateConfig {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 		
 		builder.addProperties(getHibernateProperties());
-		System.out.println("got props");
 		builder.scanPackages("info.cds.shoppingbackend.dto");
 		
 		return builder.buildSessionFactory();
