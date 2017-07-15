@@ -83,6 +83,10 @@
 			   	 <%@ include file="singleProduct.jsp" %>
 			    </c:if>
 			    
+			     <!-- Loads Only when user clicks userClickManageProducts  -->
+			    <c:if test="${userClickManageProducts == true}">
+			   	 <%@ include file="manageProducts.jsp" %>
+			    </c:if>
 			    
 			    <!-- /.container -->
 			</div>
@@ -103,6 +107,9 @@
 			     
 			     <!-- DATA TABLES Boostrap script -->
 			     <script src="${js}/dataTables.bootstrap.js"></script>
+			     
+			      <!--Boobox.js -->
+			     <script src="${js}/bootbox.min.js"></script>
 			    
 			    <!-- Self Coded JavaScript -->
 			     <script src="${js}/myapp.js"></script>
