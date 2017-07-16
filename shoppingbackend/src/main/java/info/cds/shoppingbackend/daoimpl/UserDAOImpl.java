@@ -70,7 +70,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 	
-	@Override
+	/*@Override
 	public Address getBillingAddress(User user) {
 		String query="FROM Address WHERE user=:user AND billing=:billing";
 		try{
@@ -99,5 +99,55 @@ public class UserDAOImpl implements UserDAO {
 			e.printStackTrace();
 			return null;
 		}
+	}*/
+	
+	
+	@Override
+	public Address getBillingAddress(int userId) {
+		String selectQuery = "FROM Address WHERE userId = :userId AND billing = :billing";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("userId", userId)
+							.setParameter("billing", true)
+							.getSingleResult();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
 	}
+	
+	
+	
+	
+
+	@Override
+	public List<Address> listShippingAddresses(int userId) {
+		String selectQuery = "FROM Address WHERE userId = :userId AND shipping = :shipping";
+		
+		try {
+			
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("userId", userId)
+							.setParameter("shipping", true)
+							.getResultList();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	
+	
+	
+	
+	
 }

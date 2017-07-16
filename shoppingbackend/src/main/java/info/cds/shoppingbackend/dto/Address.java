@@ -1,5 +1,7 @@
 package info.cds.shoppingbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,29 +9,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Address {
+import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+public class Address implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	 ///**********************
-		@ManyToOne
-		private User user;
+	@Column(name = "user_id")
+	private int userId;
 	//*************************
 	@Column(name = "address_line_one")
+	@NotBlank(message="please enter address line1 !")
 	private String addressLineOne;
 	
-	@Column(name = "address_line_two")	
+	@Column(name = "address_line_two")
+	@NotBlank(message="please enter address line2 !")
 	private String addressLineTwo;
 
+	@NotBlank(message="please enter city !")
 	private String city;
 
+	@NotBlank(message="please enter state !")
 	private String state;
 	
+	@NotBlank(message="please enter country !")
 	private String country;
 	
 	@Column(name = "postal_code")
+	@NotBlank(message="please enter postal code !")
 	private String postalCode;
 	
 	@Column(name = "is_shipping")
@@ -48,12 +62,14 @@ public class Address {
 
 	
 
-	public User getUser() {
-		return user;
+	
+
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getAddressLineOne() {
@@ -121,16 +137,18 @@ public class Address {
 	}
 
 	
+
+	
 	/*
 	 * toString for logging and debugging activity
 	 * */
+	
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", user=" + user + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
+		return "Address [id=" + id + ", userId=" + userId + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
 				+ addressLineTwo + ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode="
 				+ postalCode + ", shipping=" + shipping + ", billing=" + billing + "]";
 	}
-
 	
 	
 	

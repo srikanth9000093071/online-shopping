@@ -1,40 +1,59 @@
 package info.cds.shoppingbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "user_detail")
-public class User {
+public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name = "first_name")
+	@NotBlank(message="please enter first name")
 	private String firstName;
 	
 	@Column(name = "last_name")
+	@NotBlank(message="please enter last name")
 	private String lastName;
 	
+	@NotBlank(message="please enter email id")
 	private String email;
 	
 	@Column(name = "contact_number")
+	@NotBlank(message="please enter contact number")
 	private String contactNumber;
 	
 	private String role;
 	
+	@NotBlank(message="please enter password")
 	private String password;
+	
+	@Transient
+	private String confirmPassword;
 	
 	private boolean enabled = true;
 	 //***************
-			@OneToOne(mappedBy="user",cascade=CascadeType.ALL)
+			@OneToOne(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 			private Cart cart;
 	//*******************
 	public int getId() {
@@ -109,6 +128,15 @@ public class User {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	/*
