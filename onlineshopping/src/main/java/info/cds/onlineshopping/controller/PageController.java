@@ -108,4 +108,15 @@ public class PageController {
 		return "page";
 	}
 	
+	
+	//testing with the same url
+	
+	@RequestMapping(value="register")
+	public String register(Model model){
+		model.addAttribute("title", "About Us");
+		model.addAttribute("userClickAbout", true);
+		return "page";
+	}
+	
+	
 }
