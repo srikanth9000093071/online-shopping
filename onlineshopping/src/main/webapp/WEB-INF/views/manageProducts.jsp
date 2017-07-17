@@ -139,11 +139,10 @@
 		</div>
 
 		<div class="col-xs-12">
-			<div style="overflow: auto;">
-			
-			<!-- Products Table for Admin -->
-			
-			 <!-- Products table for Admin -->
+		<div class="container-fluid">
+					
+				<div class="table-responsive">
+				  	 <!-- Products table for Admin -->
 		    <table id="adminProductsTable" class="table table-striped table-bordered">
 		     <thead>
 		      <tr>
@@ -196,8 +195,15 @@
 			    </tr>
 		     </tfoot>    
 		    </table>
+				
+				</div>
+		</div>
 			
-			</div>
+			<!-- Products Table for Admin -->
+			
+			
+			
+			
 		
 		</div>
 
