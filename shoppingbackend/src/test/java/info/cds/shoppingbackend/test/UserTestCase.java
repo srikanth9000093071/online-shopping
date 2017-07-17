@@ -203,7 +203,7 @@ public class UserTestCase {
 		
 	}*/
 	
-	@Test
+	/*@Test
 	public void testGetAddresses() {
 		
 		user = userDAO.getByEmail("hr@gmail.com");
@@ -214,5 +214,5 @@ public class UserTestCase {
 		assertEquals("Failed to fetch the billing address and size does not match!","Mumbai", 
 				userDAO.getBillingAddress(user).getCity());		
 	}
-
+*/
 }
