@@ -24,7 +24,6 @@ public interface UserDAO {
 	public	 List<Address> listShippingAddresses(int userId);
 		 
 		 
-	//Update a cart
-	public boolean updateCart(Cart cart);
+	
 
 }
