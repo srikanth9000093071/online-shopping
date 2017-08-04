@@ -90,6 +90,11 @@
 			   	 <%@ include file="manageProducts.jsp" %>
 			    </c:if>
 			    
+			    <!-- Loads Only when user clicks userClickShowCart  -->
+			    <c:if test="${userClickShowCart == true}">
+			   	 <%@ include file="cart.jsp" %>
+			    </c:if>
+			    
 			    <!-- /.container -->
 			</div>
 			    
