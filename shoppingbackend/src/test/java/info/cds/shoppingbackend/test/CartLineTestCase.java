@@ -32,7 +32,7 @@ private static AnnotationConfigApplicationContext context;
 	@BeforeClass
 	public static void init() {
 		context = new AnnotationConfigApplicationContext();
-		context.scan("net.kzn.shoppingbackend");
+		context.scan("info.cds.shoppingbackend");
 		context.refresh();
 		cartLineDAO = (CartLineDAO)context.getBean("cartLineDAO");
 		productDAO = (ProductDAO)context.getBean("productDAO");
@@ -43,7 +43,7 @@ private static AnnotationConfigApplicationContext context;
 	public void testAddCartLine() {
 		
 	// 1. get the user
-	user = userDAO.getByEmail("absr@gmail.com");	
+	user = userDAO.getByEmail("srikanth9000093071@gmail.com");	
 	//2. fetch the cart
 	cart = user.getCart();
 	//3.get the product

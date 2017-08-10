@@ -42,6 +42,7 @@ public class GlobalController {
 				if(user.getRole().equals("USER")){
 					//set the cart if the user is only a buyer
 					userModel.setCart(user.getCart());
+					System.err.println("Hello user grandTotal ::"+user.getCart().getGrandTotal());
 				}
 				//set the user model in the session
 				session.setAttribute("userModel", userModel);

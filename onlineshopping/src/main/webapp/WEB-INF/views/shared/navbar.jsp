@@ -10,7 +10,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="${contextRoot}/home">Online Shopping</a>
-		</div>
+		</div> 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
@@ -30,7 +30,7 @@
 				</security:authorize>
 				
 				<security:authorize access="isAuthenticated()">
-				<li class="dropdown">
+				<li class="dropdown" id="userCart">
                     
                     	<a href="javascript:void(0)"
                     		class="btn btn-default dropdown-toggle"
