@@ -64,7 +64,7 @@
 			
 			</c:choose>
 		</security:authorize>
-		<security:authorize access="hasAuthority('USER')">
+		<security:authorize access="hasAuthority('ADMIN')">
 				<a href="${contextRoot}/manage/${product.id}/product"
 						class="btn btn-warning"> <span
 						class="glyphicon glyphicon-pencil"></span>Edit
