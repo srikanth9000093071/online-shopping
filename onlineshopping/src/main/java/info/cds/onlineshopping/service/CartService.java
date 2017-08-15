@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import info.cds.onlineshopping.model.UserModel;
 import info.cds.shoppingbackend.dao.CartLineDAO;
+import info.cds.shoppingbackend.dao.ProductDAO;
 import info.cds.shoppingbackend.dto.Cart;
 import info.cds.shoppingbackend.dto.CartLine;
 import info.cds.shoppingbackend.dto.Product;
@@ -18,6 +19,9 @@ public class CartService {
 	
 	@Autowired
 	private CartLineDAO cartLineDAO;
+	
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@Autowired
 	private HttpSession session;
@@ -71,6 +75,33 @@ public class CartService {
 		//remove the cartLine
 		cartLineDAO.remove(cartLine);
 		return "result=deleted";
+	}
+
+	public String addCartLine(int productId) {
+		String response = null;
+		
+		Cart cart =this.getCart();
+		
+		CartLine cartLine = cartLineDAO.getByCartAndProduct(cart.getId(), productId);
+		if(cartLine == null){
+			//Add a new CartLine
+			cartLine = new CartLine();
+			//Fetch the product
+			Product product = productDAO.get(productId);
+			cartLine.setCartId(cart.getId());
+			cartLine.setProduct(product);
+			cartLine.setBuyingPrice(product.getUnitPrice());
+			cartLine.setProductCount(1);
+			cartLine.setTotal(product.getUnitPrice());
+			cartLine.setAvailable(true);
+			
+			cartLineDAO.add(cartLine);
+			cart.setCartLines(cart.getCartLines() + 1);
+			cart.setGrandTotal(cart.getGrandTotal() + cartLine.getTotal());
+			cartLineDAO.updateCart(cart);
+			response = "result=added";
+		}
+		return response;
 	}
 
 }
